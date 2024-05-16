@@ -10,6 +10,16 @@ class TransactionController {
             result.json({error : "Une erreur est survenue lors de la récupération des Transactions."});
         }
     }
+
+    async getTransactionByID(request, result){
+        try {
+            const transaction = await TransactionService.getTransactionByID(request.params.id);
+            result.json(transaction)
+        } catch (error) {
+            result.status(500);
+            result.json({error : "Une erreur est survenue lors de la récupération des transaction."});
+        }
+    }
 }
 
 module.exports = new TransactionController();

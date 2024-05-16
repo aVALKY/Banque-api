@@ -1,5 +1,6 @@
 const {Model, DataTypes} = require("sequelize");
 const sequelize = require("../Config/Sequelize");
+const Client = require("./Client");
 
 class Compte extends Model {
 
@@ -49,5 +50,7 @@ Compte.init({
     tableName: "compte",
     timestamps: false
 });
+
+// Compte.belongsTo(Client, { as : "Client", foreignKey : "FK_CLIENT"});
 
 module.exports = Compte;
