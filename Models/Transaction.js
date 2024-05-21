@@ -13,7 +13,7 @@ Transaction.init ({
         primaryKey : true
     },
 
-    TR_type : {
+    TR_Type : {
         type : DataTypes.STRING,
         allowNull : false
     },
