@@ -1,9 +1,8 @@
 const Transaction = require("../Models/Transaction");
 
-class TransactionService {
-
+class TransactionService{
     async getAllTransaction(){
-        return await Transaction.findAll({include : ["compteDebiteur", "compteBeneficiaire"]});
+        return await Transaction.findAll({include : ['compteDebiteur', 'compteBeneficiaire']});
     }
 
     async getTransactionByID(transactionID){
@@ -11,7 +10,20 @@ class TransactionService {
     }
 
     async addTransaction(transaction){
-        return await Transaction.create(transaction)
+        return await Transaction.create(transaction);
+    }
+
+    async removeTransaction(transactionID){
+        return await Transaction.destroy({
+            where : {TR_ID : transactionID}
+        })
+    }
+
+    async updateTransaction(transactionID, transaction){
+        return await Transaction.update(transaction, {
+            where : {TR_ID : transactionID},
+            individualHooks : true
+        })
     }
 }
 
